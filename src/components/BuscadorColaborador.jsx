@@ -2,35 +2,30 @@ import React from "react";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 
-const BuscadorColaborador = (props) => {
-    /* const [datoConsulta, SetDatoConsulta] = useState(null)  
-    const buscador = (e) => {
-    console.log("buscador");
-    consulta();
-  };
-  const consulta = (e) => {
-    console.log(e.target.value);
-    return e.target.value; */
-  
 
-  const [busqueda, setBusqueda] = useState("");
+const BuscadorColaborador = (props) => {
+
 
   let handleChange= e => {
-      setBusqueda(e.target.value);
-      filtrar(e.target.value);
-      console.log(e.target.value);
+      let terminoBusqueda = e.target.value
+      filtrar(terminoBusqueda)
+
   }
 
-  const filtrar=(terminoBusqueda) => {
-      var resultadosBusqueda = props.colaboradores.filter((props.colaborador))
-      if(props.colaborador.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-        ||props.colaborador.correo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-        ){
-          return props.colaborador;  
-        }
-  
-      props.setColaboradores(resultadosBusqueda);
-};
+  let filtrar = (terminoBusqueda)=>{
+       
+    let colaboradores = props.colaboradores
+    var resultadosBusqueda=colaboradores.filter((colaborador)=>{
+      if(colaborador.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+      ){ return colaborador; }
+    });
+    props.getColaboradores(resultadosBusqueda)
+ 
+  }
+
+
+
+
   return (
     <>
       <h3>Buscador</h3>
@@ -38,7 +33,7 @@ const BuscadorColaborador = (props) => {
         <div className="input-group">
           <input
             onChange={handleChange}
-            value={busqueda}
+            //value={busqueda}
             type="search"
             className="form-control rounded porte-barra"
             placeholder="Búsqueda por nombre o correo"

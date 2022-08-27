@@ -9,22 +9,38 @@ import BuscadorColaborador from "./components/BuscadorColaborador";
 
 function App() {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
- //console.log(colaboradores)
-  const guardarColaborador = (colaborador) => {
+  
+  const [busqueda, setBusqueda]= useState([]);
+
+ //Guardar nuevos colaboradores
+ const guardarColaborador = (colaborador) => {
     setColaboradores([...colaboradores, colaborador])
-    //console.log("guardarColaborador"); 
+    
   }
   
+  
+  //El fitro de colaboradores
+  const pull_data = (data) => {
+    setBusqueda([...busqueda, data])
+    console.log(busqueda[0])
+  }
+
+
+
+  
+    
   return (
     <>
       <BuscadorColaborador
         colaboradores={colaboradores}
+        getColaboradores = {pull_data}
       />
       <FormColaborador
         guardarColaborador= {guardarColaborador}
       />
       <TablaColaborador 
         colaboradores={colaboradores}
+       
       />
      {/* <ul>
         {colaboradores.map((colaborador)=> (
