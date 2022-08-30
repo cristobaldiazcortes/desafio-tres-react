@@ -6,7 +6,8 @@ import { Button } from "react-bootstrap";
 const BuscadorColaborador = (props) => {
 
 
-  let handleChange= e => {
+  let handleChange= e => { 
+    
       let terminoBusqueda = e.target.value
       filtrar(terminoBusqueda)
 
@@ -19,11 +20,9 @@ const BuscadorColaborador = (props) => {
       if(colaborador.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
       ){ return colaborador; }
     });
-    props.getColaboradores(resultadosBusqueda)
+   props.getColaboradores(resultadosBusqueda)
  
   }
-
-
 
 
   return (

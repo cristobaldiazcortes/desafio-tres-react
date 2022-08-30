@@ -9,7 +9,6 @@ import BuscadorColaborador from "./components/BuscadorColaborador";
 
 function App() {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
-  
   const [busqueda, setBusqueda]= useState([]);
 
  //Guardar nuevos colaboradores
@@ -21,13 +20,11 @@ function App() {
   
   //El fitro de colaboradores
   const pull_data = (data) => {
+    let busqueda = [] //-> Reseteamos la array cada vez que se ejecute
     setBusqueda([...busqueda, data])
-    console.log(busqueda[0])
-  }
 
+  };
 
-
-  
     
   return (
     <>
@@ -40,6 +37,7 @@ function App() {
       />
       <TablaColaborador 
         colaboradores={colaboradores}
+        BuscadorColaborador = {busqueda}
        
       />
      {/* <ul>

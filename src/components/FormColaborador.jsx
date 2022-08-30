@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState } from "react"
 import { Form, Button } from "react-bootstrap";
 
 const FormColaborador = (props) => {
@@ -7,14 +7,20 @@ const FormColaborador = (props) => {
 
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
+  const [error, SetError] = useState(false);
 
-  const capturarNombre = (e) => { 
-        setNombre(e.target.value);
-  }
+  const capturarNombre = (e) => setNombre(e.target.value);
   const capturarCorreo = (e) => setCorreo(e.target.value);
 
   const guardarColaboradorForm = (e) => {
       e.preventDefault();
+
+      if (nombre === ''  || correo === '' ) {
+        SetError(true);
+        return alert("debe rellenar todos los campos");
+      } else { 
+        SetError(false);
+      }
 
       const colaborador = {
           id: Date.now(),
@@ -22,8 +28,10 @@ const FormColaborador = (props) => {
           correo: correo,
       }
       props.guardarColaborador(colaborador);
-      
-   
+
+      setCorreo('');    
+      setNombre('');    
+           
   }
 
   return (
