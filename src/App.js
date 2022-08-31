@@ -18,13 +18,13 @@ function App() {
 
   //El fitro de colaboradores
   const cargaData = (data) => {
-    let busqueda = []; //-> Reseteamos la array cada vez que se ejecute
+    let busqueda = [] //-> Reseteamos la array cada vez que se ejecute
     setBusqueda([...busqueda, data]);
   };
 
   return (
     <>
-      <div className="ajustes">
+      
         <BuscadorColaborador
           colaboradores={colaboradores}
           getColaboradores={cargaData}
@@ -34,7 +34,7 @@ function App() {
           colaboradores={colaboradores}
           BuscadorColaborador={busqueda}
         />
-      </div>
+      
     </>
   );
 }
