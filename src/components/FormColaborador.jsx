@@ -55,11 +55,11 @@ const FormColaborador = (props) => {
             type="email"
             placeholder="Ingrese correo" />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+            nunca compartiremos su mail.
           </Form.Text> 
         </Form.Group>
         
-        <Button variant="primary" type="submit">
+        <Button variant="success" type="submit">
           Guardar
         </Button>
       </Form>
